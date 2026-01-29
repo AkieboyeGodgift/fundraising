@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biogbolo Orphanage - Give Hope, Change Lives</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D97757;
+            --primary-dark: #B85A3B;
+            --secondary: #F4E9D8;
+            --accent: #E8A87C;
+            --text-dark: #2C2416;
+            --text-light: #6B5D4F;
+            --white: #FFFBF5;
+            --cream: #FFF8ED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 251, 245, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid rgba(217, 119, 87, 0.1);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(217, 119, 87, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-30px, -50px) rotate(120deg); }
+            66% { transform: translate(30px, -30px) rotate(240deg); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: var(--accent);
+            opacity: 0.3;
+            z-index: -1;
+            transform: skewY(-2deg);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(217, 119, 87, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(44, 36, 22, 0.15);
+        }
+
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(217, 119, 87, 0.2) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(44, 36, 22, 0.15);
+            z-index: 2;
+            max-width: 250px;
+        }
+
+        .floating-card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .floating-card-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* CTA Buttons */
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(217, 119, 87, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(217, 119, 87, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Impact Section */
+        .impact {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .impact-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .impact-card {
+            background: var(--cream);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.4s;
+            border: 1px solid transparent;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(217, 119, 87, 0.15);
+            border-color: var(--accent);
+        }
+
+        .impact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .impact-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .impact-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Donation Section */
+        .donation {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--cream) 100%);
+        }
+
+        .donation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(44, 36, 22, 0.1);
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .amount-btn {
+            padding: 1.5rem;
+            border: 2px solid var(--accent);
+            background: transparent;
+            border-radius: 15px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .amount-btn:hover,
+        .amount-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .custom-amount {
+            margin: 2rem 0;
+        }
+
+        .custom-amount input {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            transition: border-color 0.3s;
+        }
+
+        .custom-amount input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .donor-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .donor-info input,
+        .donor-info input[type="email"] {
+            padding: 1.2rem;
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .donor-info input:focus,
+        .donor-info input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .donation-submit {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .donation-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(217, 119, 87, 0.4);
+        }
+
+        /* Stories Section */
+        .stories {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .stories-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .story-card {
+            background: var(--cream);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.4s;
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .story-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .story-content {
+            padding: 2rem;
+        }
+
+        .story-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .story-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-quote {
+            font-style: italic;
+            color: var(--primary);
+            border-left: 3px solid var(--primary);
+            padding-left: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-about h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-links h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 251, 245, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 251, 245, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 251, 245, 0.6);
+        }
+
+        .organizer {
+            margin-top: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .donor-info {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Biogbolo Orphanage</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#impact">Our Impact</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="#stories">Stories</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Give Hope, <span class="highlight">Change Lives</span></h1>
+                <p>Every child deserves love, care, and a bright future. Your donation helps provide shelter, education, and hope to orphaned children in Biogbolo community.</p>
+                
+                <div class="cta-group">
+                    <a href="#donate" class="btn btn-primary">Donate Now</a>
+                    <a href="#impact" class="btn btn-secondary">Learn More</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Children Supported</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Transparency</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Years of Service</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=600&fit=crop" alt="Children at Biogbolo Orphanage">
+                </div>
+                <div class="floating-card">
+                    <div class="floating-card-title">Making a Difference</div>
+                    <div class="floating-card-text">Join us in transforming lives through education, care, and love.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact" id="impact">
+        <div class="section-header fade-in">
+            <div class="section-label">Our Impact</div>
+            <h2 class="section-title">How Your Donation Helps</h2>
+            <p class="section-description">Every contribution goes directly to improving the lives of children in our care. Here's how we make a difference.</p>
+        </div>
+
+        <div class="impact-grid">
+            <div class="impact-card fade-in">
+                <div class="impact-icon">🏠</div>
+                <h3>Safe Shelter</h3>
+                <p>We provide a warm, secure home where children can feel safe and loved. Your donations help maintain our facilities and create a nurturing environment.</p>
+            </div>
+
+            <div class="impact-card fade-in">
+                <div class="impact-icon">📚</div>
+                <h3>Quality Education</h3>
+                <p>Every child deserves access to education. We ensure all children attend school, have books, uniforms, and the support they need to succeed.</p>
+            </div>
+
+            <div class="impact-card fade-in">
+                <div class="impact-icon">🍽️</div>
+                <h3>Nutritious Meals</h3>
+                <p>Three healthy meals daily ensure our children grow strong and healthy. Your support helps us provide balanced nutrition for all.</p>
+            </div>
+
+            <div class="impact-card fade-in">
+                <div class="impact-icon">⚕️</div>
+                <h3>Healthcare</h3>
+                <p>Regular medical checkups, vaccinations, and emergency care are provided to ensure every child stays healthy and receives proper treatment when needed.</p>
+            </div>
+
+            <div class="impact-card fade-in">
+                <div class="impact-icon">🎨</div>
+                <h3>Recreation & Skills</h3>
+                <p>Beyond basic needs, we provide sports, arts, and vocational training to help children develop their talents and build confidence.</p>
+            </div>
+
+            <div class="impact-card fade-in">
+                <div class="impact-icon">❤️</div>
+                <h3>Emotional Support</h3>
+                <p>Professional counselors and caring staff provide the emotional support and guidance children need to heal and thrive.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="donation" id="donate">
+        <div class="section-header fade-in">
+            <div class="section-label">Make a Difference</div>
+            <h2 class="section-title">Your Donation Matters</h2>
+            <p class="section-description">Choose an amount or enter a custom donation. Every contribution, no matter the size, makes a real difference.</p>
+        </div>
+
+        <div class="donation-container fade-in">
+            <div class="donation-amounts">
+                <button class="amount-btn" data-amount="5000">₦5,000</button>
+                <button class="amount-btn" data-amount="10000">₦10,000</button>
+                <button class="amount-btn" data-amount="25000">₦25,000</button>
+                <button class="amount-btn" data-amount="50000">₦50,000</button>
+            </div>
+
+            <div class="custom-amount">
+                <input type="number" id="customAmount" placeholder="Enter custom amount (₦)">
+            </div>
+
+            <form id="donationForm">
+                <div class="donor-info">
+                    <input type="text" id="firstName" placeholder="First Name" required>
+                    <input type="text" id="lastName" placeholder="Last Name" required>
+                    <input type="email" id="email" class="full-width" placeholder="Email Address" required>
+                    <input type="tel" id="phone" class="full-width" placeholder="Phone Number" required>
+                </div>
+
+                <button type="submit" class="donation-submit">Complete Donation</button>
+            </form>
+
+            <p style="text-align: center; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+                🔒 Secure payment processing. Your information is protected.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stories Section -->
+    <section class="stories" id="stories">
+        <div class="section-header fade-in">
+            <div class="section-label">Success Stories</div>
+            <h2 class="section-title">Lives We've Touched</h2>
+            <p class="section-description">Read about the incredible journeys of children whose lives have been transformed through your support.</p>
+        </div>
+
+        <div class="stories-grid">
+            <div class="story-card fade-in">
+                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=300&fit=crop" alt="Child success story" class="story-image">
+                <div class="story-content">
+                    <h3>Hope's Journey</h3>
+                    <p>When Hope arrived at our orphanage at age 7, she was shy and withdrawn. Today, at 14, she's a top student in her class and dreams of becoming a doctor.</p>
+                    <div class="story-quote">"The orphanage became my family. They believed in me when I didn't believe in myself."</div>
+                </div>
+            </div>
+
+            <div class="story-card fade-in">
+                <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=400&h=300&fit=crop" alt="Education success" class="story-image">
+                <div class="story-content">
+                    <h3>Education Success</h3>
+                    <p>Thanks to scholarship support, 5 of our children graduated secondary school last year, with 3 gaining admission to university programs.</p>
+                    <div class="story-quote">"Education opened doors I never knew existed. I'm now studying engineering!"</div>
+                </div>
+            </div>
+
+            <div class="story-card fade-in">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop" alt="Community impact" class="story-image">
+                <div class="story-content">
+                    <h3>Community Impact</h3>
+                    <p>Our vocational training program has helped older children learn valuable skills. Several have started their own small businesses in Biogbolo.</p>
+                    <div class="story-quote">"The skills I learned here changed my life. Now I can support myself and give back."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Biogbolo Orphanage</h3>
+                <p>Dedicated to providing love, care, and opportunities to orphaned children in our community. Together, we're building brighter futures.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#impact">Our Impact</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="#stories">Stories</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">Biogbolo, Nigeria</a></li>
+                    <li><a href="mailto:info@biogbolo-orphanage.org">Email Us</a></li>
+                    <li><a href="tel:+234">Call Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Biogbolo Orphanage. All rights reserved.</p>
+            <p class="organizer">Organized by Akieboye Godgift</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Donation amount selection
+        const amountButtons = document.querySelectorAll('.amount-btn');
+        const customAmountInput = document.getElementById('customAmount');
+        let selectedAmount = 0;
+
+        amountButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                amountButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedAmount = parseInt(this.dataset.amount);
+                customAmountInput.value = '';
+            });
+        });
+
+        customAmountInput.addEventListener('input', function() {
+            amountButtons.forEach(b => b.classList.remove('active'));
+            selectedAmount = parseInt(this.value) || 0;
+        });
+
+        // Form submission
+        const donationForm = document.getElementById('donationForm');
+        donationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            if (selectedAmount === 0) {
+                alert('Please select or enter a donation amount.');
+                return;
+            }
+
+            // Simulate donation processing
+            const confirmMessage = `Thank you, ${firstName} ${lastName}!\n\nYour donation of ₦${selectedAmount.toLocaleString()} will make a real difference in the lives of children at Biogbolo Orphanage.\n\nA confirmation email will be sent to ${email}.\n\nIn a real implementation, this would redirect to a secure payment gateway.`;
+            
+            alert(confirmMessage);
+            
+            // Reset form
+            donationForm.reset();
+            customAmountInput.value = '';
+            amountButtons.forEach(b => b.classList.remove('active'));
+            selectedAmount = 0;
+        });
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect on hero background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (element.textContent.includes('+') ? '+' : '%');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (element.textContent.includes('+') ? '+' : '%');
+                }
+            }, 30);
+        }
+
+        // Trigger counter animation when stats are visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        const hasPlus = text.includes('+');
+                        const hasPercent = text.includes('%');
+                        const number = parseInt(text.replace(/[^0-9]/g, ''));
+                        
+                        stat.textContent = '0' + (hasPlus ? '+' : hasPercent ? '%' : '');
+                        animateCounter(stat, number);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) {
+            statsObserver.observe(heroStats);
+        }
+    </script>
+</body>
+</html>
